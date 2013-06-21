@@ -1,12 +1,15 @@
 <p>Refresh (seconds): <input ng-model="refreshInterval"></p>
 
+<form name="newFeed" novalidate>
+
 <h3>Add Another Feed</h3>
-
 <div>
-  URL: <input size="80" ng-model="newFeed.url">
-  <button ng-click="addFeed(newFeed)">Add Feed</button>
+  URL: <input type="url" size="80" ng-model="newFeed.url">
+  <button ng-disabled="!newFeed.$valid" ng-click="addFeed(newFeed)">Add Feed</button>
+  <span class="error" ng-show="newFeed.$error.required">Required!</span>
+  <span class="error" ng-show="newFeed.$error.url">Invalid URL format!</span>
 </div>
-
+</form>
 <hr/>
 
 <div ng-repeat="feed in feeds">

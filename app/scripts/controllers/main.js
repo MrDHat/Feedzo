@@ -28,9 +28,12 @@ angular.module('FeedzoApp')
     };
 
     $scope.addFeed = function(feed) {
-      $scope.feeds.push(feed);
-      $scope.fetchFeed(feed);
-      $scope.newFeed = {};
+      if (feed.$valid) {
+        var newFeed = angular.copy(feed);
+        $scope.feeds.push(newFeed);
+        $scope.fetchFeed(newFeed);
+        $scope.newFeed.url = '';
+      }
     };
 
     $scope.deleteFeed = function(feed) {

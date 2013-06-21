@@ -139,6 +139,12 @@ module.exports = function (grunt) {
         options: {
           debugInfo: true
         }
+      },
+      bootstrap: {
+        options: {
+          sassDir: '<%= yeoman.app %>/components/sass-bootstrap/lib',
+          cssDir: '.tmp/styles'
+        }
       }
     },
     concat: {
@@ -225,7 +231,7 @@ module.exports = function (grunt) {
         files: {
           '<%= yeoman.dist %>/scripts/scripts.js': [
             '<%= yeoman.dist %>/scripts/scripts.js'
-          ]
+          ],
         }
       }
     },
@@ -235,7 +241,7 @@ module.exports = function (grunt) {
           src: [
             '<%= yeoman.dist %>/scripts/{,*/}*.js',
             '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
             '<%= yeoman.dist %>/styles/fonts/*'
           ]
         }
@@ -252,8 +258,7 @@ module.exports = function (grunt) {
             '*.{ico,txt}',
             '.htaccess',
             'components/**/*',
-            'images/{,*/}*.{gif,webp}',
-            'styles/fonts/*'
+            'images/{,*/}*.{gif,webp}'
           ]
         }]
       }
@@ -266,6 +271,7 @@ module.exports = function (grunt) {
     'clean:server',
     'coffee:dist',
     'compass:server',
+    'compass:bootstrap',
     'livereload-start',
     'connect:livereload',
     'open',
@@ -285,6 +291,7 @@ module.exports = function (grunt) {
     'jshint',
     'test',
     'coffee',
+    'compass:bootstrap',
     'compass:dist',
     'useminPrepare',
     'imagemin',
